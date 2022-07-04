@@ -11,7 +11,7 @@ struct ContentView: View {
   
   @State private var checkAmount = 0.0
   @State private var numberOfPeople = 2
-  @State private var tipPercentage = 20
+  @State private var tipPercentage = 0
   @FocusState private var amountIsFocused: Bool
   
   let localCurrency: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currencyCode ?? "USD")
@@ -63,6 +63,7 @@ struct ContentView: View {
         
         Section {
           Text(totalAmount, format: localCurrency)
+            .foregroundColor(tipPercentage == 0 ? .red : .black)
         } header: {
           Text("Total amount")
         }
